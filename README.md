@@ -34,6 +34,8 @@ find . -wholename "*local/data/ui/views/*.xml" -exec egrep -i -e '<(dashboard|fo
 
 ## Bulk update of local.meta
 
+Note that this will update both meta files - the assumption being it doesn't matter if we update default.meta on a splunkbase app as we're not really going to be deploying that file in cloud; it should be coming as part of the Splunkbase app installation.
+
 ### Preview
 
 ```bash
