@@ -37,12 +37,12 @@ find . -wholename "*local/data/ui/views/*.xml" -exec egrep -i -e '<(dashboard|fo
 ### Preview
 
 ```bash
-find . -wholename "*metadata/local.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -r -e 's/owner\s*+*=\s*admin/owner = sc_admin/g' -e 's/(\[[^]]*\sadmin)\s([^]]*\])/\1, sc_admin \2/g' {} | grep sc_admin
+find . -wholename "*metadata/*.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -r -e 's/owner\s*+*=\s*admin/owner = sc_admin/g' -e 's/(\[[^]]*\sadmin)(\s|,)([^]]*\])/\1, sc_admin\2\3/g' {} | grep sc_admin
 ```
 
 ### Make changes
 
 ```bash
-find . -wholename "*metadata/local.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -i -r -e 's/owner\s*=\s*admin/owner = sc_admin/g' -e 's/(\[[^]]*\sadmin)\s([^]]*\])/\1, sc_admin \2/g' {}
+find . -wholename "*metadata/*.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -i -r -e 's/owner\s*+*=\s*admin/owner = sc_admin/g' -e 's/(\[[^]]*\sadmin)(\s|,)([^]]*\])/\1, sc_admin\2\3/g' {}
 ```
 
