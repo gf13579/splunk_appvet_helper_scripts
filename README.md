@@ -23,13 +23,13 @@ Blindly assumes all dashes are compatible with the jquery upgrade in Splunk 8.so
 ### Preview
 
 ```bash
-find . -wholename "*local/data/ui/views/*.xml" -exec egrep -i -e '<(dashboard|form)(\s|>)' -l {} \; | xargs -I {} egrep -i '<(dashboard|form)\s[^>]*version' -L {} | xargs -I {} sed -r 's/(<(dashboard|form)[^>]*)>/\1 version="1.1">/g' {}| egrep "<(dashboard|form)"
+find . -wholename "*local/data/ui/views/*.xml" -exec egrep -i -e '<(dashboard|form)(\s|>)' -l {} \; | xargs -I {} egrep -i '<(dashboard|form)\s[^>]*version' -L {} | xargs -I {} sed -r 's/(<(dashboard|form)(\s[^>]*)*)>/\1 version="1.1">/g' {} | egrep "version=\"1.1\""
 ```
 
 ### Make changes
 
 ```bash
-find . -wholename "*local/data/ui/views/*.xml" -exec egrep -i -e '<(dashboard|form)(\s|>)' -l {} \; | xargs -I {} egrep -i '<(dashboard|form)\s[^>]*version' -L {} | xargs -I {} sed -i -r 's/(<(dashboard|form)[^>]*)>/\1 version="1.1">/g' {}
+find . -wholename "*local/data/ui/views/*.xml" -exec egrep -i -e '<(dashboard|form)(\s|>)' -l {} \; | xargs -I {} egrep -i '<(dashboard|form)\s[^>]*version' -L {} | xargs -I {} sed -i -r 's/(<(dashboard|form)(\s[^>]*)*)>/\1 version="1.1">/g' {}
 ```
 
 ## Bulk update of local.meta
