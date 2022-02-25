@@ -39,12 +39,12 @@ Note that this will update both meta files - the assumption being it doesn't mat
 ### Preview
 
 ```bash
-find . -wholename "*metadata/*.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -r -e 's/owner\s*+*=\s*admin/owner = sc_admin/g' -e 's/(\[[^]]*\sadmin)(\s|,)([^]]*\])/\1, sc_admin\2\3/g' {} | grep sc_admin
+find . -wholename "*metadata/*.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -r -e 's/(\[[^]]*\sadmin)(\s|,)([^]]*\])/\1, sc_admin\2\3/g' {} | grep sc_admin
 ```
 
 ### Make changes
 
 ```bash
-find . -wholename "*metadata/*.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -i -r -e 's/owner\s*+*=\s*admin/owner = sc_admin/g' -e 's/(\[[^]]*\sadmin)(\s|,)([^]]*\])/\1, sc_admin\2\3/g' {}
+find . -wholename "*metadata/*.meta" -exec grep -i -P '[\s,=]sc_admin[\s,^]' -L {} \; | xargs -I {} sed -i -r -e 's/(\[[^]]*\sadmin)(\s|,)([^]]*\])/\1, sc_admin\2\3/g' {}
 ```
 
